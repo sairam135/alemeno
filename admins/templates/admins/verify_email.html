@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alemeno</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+    <link href="https://fonts.googleapis.com/css2?family=Piedra&display=swap" rel="stylesheet">
+   <style>
+    @import "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css";
+body{
+    margin: 0;
+    padding: 0;
+    font-family:sans-serif;
+    background:url(https://images.creativemarket.com/0.1.0/ps/7756675/910/607/m2/fpnw/wm1/d9xadh26gbufqy2wdye0eic3lpyz49ibhzrjfqmy4xqwebpjiox1plwtsiqhsjtc-.jpg?1581597619&s=f1f457cac1e2b451ab5c1bd45c10ccd7);
+    opacity:rgba(0,0,0,0.6);
+    background-size: cover;
+}
+.login-box{
+    width: 300px;
+    border-radius:10px;
+    color:red;
+    background-color:rgba(255,255,255,1);
+    padding:0px 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.login-box h1{
+
+    font-size:40px;
+    border-bottom: 4px solid;
+    border-bottom-color:black;
+    margin-bottom:50px ;
+    padding:13px 0;
+    text-align:center;
+}
+.textbox{
+    width:100%;
+    overflow:hidden;
+    font-size: 20px ;
+    padding:8px 0;
+    margin:8px 0;
+    border-bottom: 1px solid;
+    border-bottom-color: black ;
+}
+.textbox i{
+    width:26px;
+   float:left;
+    color:red;
+    text-align: center;
+}
+.textbox input{
+    border:none;
+    outline:none;
+    background: white;
+    font-size: 18px;
+    color:black;
+    width:250px;
+    float:left;
+    margin: 0 10px;
+}
+.loginbtn{
+    text-align:center;
+    margin:0px;
+}
+.btn{
+    text-align:center;
+    color:white;
+    width:60%;
+    background: #e60000;
+    border:2px solid;
+    border-color: black;
+    padding:5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin:12px 0px;
+    border-radius:7px;
+}
+.btn:hover{
+  transform:scale(1.1);
+  background:#ff1a1a
+}
+.signup{
+    color:black;
+    padding:20px;
+    font-size: 17px;
+    font-weight: bold;
+    text-align:center;
+}
+.signup:hover{
+    color:#ff1a1a;
+}
+nav{
+width:100%;
+position:fixed;
+height:70px;
+background-color:rgba(0,0,0,1);
+z-index:9999;
+}
+nav .logo{
+    float:left;
+    font-size:20px ;
+    color:#fff;
+    padding-bottom:5px;
+    padding-left:20px;
+    font-family:'Piedra', cursive;
+}
+nav ul{
+    text-align:right;
+    margin:0px;
+    padding:0px;
+    display:flex;
+    float:right;
+}
+nav ul li{
+    list-style:none;
+    display:inline-block;
+    padding:15px;
+}
+nav ul li a{
+    float:right;
+    text-decoration:none;
+    display:block;
+    text-transform:uppercase;
+    color:#fff;
+    font-size:15px;
+    font-family:'Raleway';
+    padding:9px 10px;
+    margin-right:8px;
+}
+nav ul li a:hover{
+    text-decoration:none;
+    background-color:#fff;
+    color:#000;
+    border-radius:7px;
+    .icon{
+  color:red;
+}
+
+}
+nav ul li a.active{
+background:#cc0000;
+color:#fff;
+border-radius:7px;
+
+}
+</style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+          <h3>Alemeno</h3>
+        </div>
+        <ul>
+          <li><a href="{% url 'index' %}"><i class="fa fa-home" aria-hidden="true" style="padding-right:10px;"></i>Home</a></li>
+          <li><a href="{% url 'register' %}"><i class="fa fa-user" aria-hidden="true" style="padding-right:10px;" class="icon"></i>Register</a></li>
+        </ul>
+      </nav>
+      <form method="POST">
+       {%csrf_token%}
+    <div class="login-box">
+        <div class="textbox" >
+            <i class="fa fa-lock" aria-hidden="true"></i>
+            <input type="password" placeholder="One Time Password" name="otp" value="" autocomplete="off" required>
+        </div>
+       
+        <div class="loginbtn">
+           <input class="btn" type="submit" name="" value="Submit">
+        </div>
+          
+    </div>
+    </form>
+     {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+</body>
+</html> 

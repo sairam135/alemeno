@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Alemeno</title>
+<link href="https://fonts.googleapis.com/css2?family=Piedra&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'admins/index.css' %}">
+<style>
+  #section1{
+    width:100vw;
+    height:100vh;
+    background:url(https://images.creativemarket.com/0.1.0/ps/7756675/910/607/m2/fpnw/wm1/d9xadh26gbufqy2wdye0eic3lpyz49ibhzrjfqmy4xqwebpjiox1plwtsiqhsjtc-.jpg?1581597619&s=f1f457cac1e2b451ab5c1bd45c10ccd7);
+    background-size:cover;
+    background-position:center;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <div class="logo">
+      <h3>Alemeno</h3>
+    </div>
+    <ul>
+      <li><a href="{% url 'index' %}" class="active"><i class="fa fa-home" aria-hidden="true" style="padding-right:10px;"></i>Home</a></li>
+      <li><a href="{% url 'login' %}"><i class="fa fa-user" aria-hidden="true" style="padding-right:10px;" class="icon"></i>Login</a></li>
+      <li><a href="{% url 'register' %}"><i class="fa fa-user-plus" aria-hidden="true" style="padding-right:10px;"class="icon"></i>Register</a></li>
+    </ul>
+  </nav>
+</div>
+<div id="section1">
+  <div id="introduction" style="position:absolute;top:70px;background-color:rgba(0,0,0,0.4);padding:20px;width:100vw;height:90vh;">
+    <br><br><br>
+    <h3 style="text-align:center;color:white;font-family:serif; "> Are you wanting to develop healthy eating habits?<br> we got you covered<br> welcome to </h4>
+    <h1 style="text-align:center;color:white;font-family:'Inconsolata',serif;font-weight:bold;">Alemeno</h3>
+    <h2 style="text-align:center;color:white;font-family:serif;">Inculcate healthy eating habits right from childhood</h4>
+    <h3 style="text-align:center;color:white;font-family:serif;">Signup now and join us today!!<br> We wish you</h4>
+    <h2 style="text-align:center;color:white;font-family:serif;">All the Best!</h4>
+  </div>
+</div>
+<div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+</body>
+</html>

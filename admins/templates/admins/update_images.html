@@ -1,0 +1,251 @@
+<!-- CSS only -->
+<title>Alemeno</title>
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<!-- JS, Popper.js, and jQuery -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<style>
+  nav{
+width:100%;
+margin:auto;
+position:fixed;
+height:70px;
+background-color:rgba(0,0,0,1);
+z-index:9999;
+}
+nav .logo{
+    float:left;
+    color:#fff;
+    padding-top:18px;
+    padding-bottom:18px;
+    padding-left:20px;
+    padding-right:20px;
+    font-family:'Piedra', cursive;
+    font-weight:bold;
+}
+#navbar ul{
+    text-align:right;
+    margin:0px;
+    padding:0px;
+    display:flex;
+    float:left;
+}
+#navbar ul li{
+    list-style:none;
+    display:inline-block;
+    padding:15px;
+}
+#navbar ul li a{
+    float:left;
+    text-decoration:none;
+    display:inline-block;
+    text-transform:uppercase;
+    color:#fff;
+    font-size:15px;
+    font-family:'ABeeZee', serif;
+    padding:9px 10px;
+    margin-right:8px;
+    position:relative;
+}
+#navbar ul li a:after{
+  background: none repeat scroll 0 0 transparent;
+  content:"";
+  position:absolute;
+  display:block;
+  background:red;
+  bottom:0;
+  height: 2px;
+  left: 50%;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+#navbar ul li a:hover:after{
+    color:red;
+    width:100%;
+    left:0;
+    .icon{
+  color:red;
+}
+    
+}
+#navbar ul li a.active:after{
+color:red;
+background:red;
+width:100%;
+left:0;
+}
+#sidebar {
+  position:absolute;
+  top:0px;
+  right:-220px;
+  width:220px;
+  height:100%;
+  background:rgba(0,0,0,0);
+  transition:all 300ms linear;
+}
+#sidebar.active {
+  right:0px;
+  height:100vh;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color:white;
+}
+#sidebar .toggle-btn {
+  position:absolute;
+  right:240px;
+  top:10px;
+}
+#sidebar .toggle-btn span {
+  display:block;
+  width:30px;
+  height:5px;
+  background:white;
+  margin:5px 0px;
+  cursor:pointer;
+}
+#sidebar div.list div.item  {
+  padding:15px 10px;
+  font-weight: bold;
+  border-bottom:1px solid black;
+  color:blue;
+  text-transform:uppercase;
+  font-size:14px;
+}
+#sidebar div.list div.item:hover {
+transform:scale(1.01);
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">
+    <h3>Alemeno</h3>
+  </div>
+  <div id="side-navbar" >
+    <div id="sidebar">
+  <div class="toggle-btn" onclick="toggleSidebar(this)">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="list">
+    <div class="item" ><i class="fa fa-user-circle fa-4x" style="color:red;" ></i>{{firstname}} {{lastname}}</div>
+    <div class="item" ><a  href="{% url 'logout' %}" style="text-decoration:none;color:blue;" onclick="return confirm('Do you really want to logout?');"><i class="fa fa-sign-out" style="padding-right:10px;color:red"></i>Log out</a></div>
+  </div>
+</div>
+  <div id="navbar">
+  <ul>
+    <li><a href="{% url 'home' %}" ><i class="fa fa-home" aria-hidden="true" style="padding-right:10px;"></i>Home</a></li>
+    <li><a href="{% url 'add_kids' %}"><i class="fa fa-user-plus" aria-hidden="true" style="padding-right:10px;"></i>Add Kids</a></li>
+    <li><a href="{% url 'kids' %}"><i class="fa fa-user" aria-hidden="true" style="padding-right:10px;"class="icon"></i>Kids</a></li>
+    </ul>
+    </div>
+</nav>
+<div class="container">
+    <br><br><br>
+    <h2 style="text-align:center;">Update Image</h2>
+	<div class="row">
+      <!-- edit form column -->
+      <div class="col-xl-9 personal-info">
+        
+        <form class="form-horizontal" role="form" method="POST">
+          {%csrf_token%}
+          <div class="form-group">
+            <label class="col-xl-3 control-label">Current Image Url:</label>
+            <div class="col-xl-8">
+              <input class="form-control" type="text" value="{{url}}" name="" readonly>
+            </div>
+          </div>
+          <hr>
+          <div class="form-group">
+            <label class="col-xl-3 control-label">New Image Url:</label>
+            <div class="col-xl-8">
+              <input class="form-control" type="text" value="" placeholder="Enter New Image Url" name="image_url" required>
+            </div>
+          </div>
+          <hr>
+          <div class="form-group">
+            <label class="col-xl-3 control-label">Image:</label>
+            <div class="col-xl-8">
+              <img src="{{url}}" width="400px" height="400px" alt="">
+          </div>
+          <hr>
+          <div class="form-group">
+            <label class="col-xl-3 control-label">Group:</label>
+            <div class="col-xl">
+              <input type="radio" id="Veg" name="food_group" value="Veg">
+              <label for="Veg">Veg</label>
+              <input type="radio" id="Fruit" name="food_group" value="Fruit">
+              <label for="Fruit">Fruit</label>
+              <input type="radio" id="Grain" name="food_group" value="Grain">
+              <label for="Grain">Grain</label>
+              <input type="radio" id="Protein" name="food_group" value="Protein">
+              <label for="Protein">Protein</label>
+              <input type="radio" id="Dairy" name="food_group" value="Dairy">
+              <label for="Dairy">Dairy</label>
+              <input type="radio" id="Confectionery" name="food_group" value="Confectionery">
+              <label for="Confectionery">Confectionery</label>
+              <input type="radio" id="Unknown" name="food_group" value="Unknown">
+              <label for="Unknown">Unknown</label>
+            </div>
+          </div>
+          <hr>
+          <div class="form-group">
+            <label class="col-xl-3 control-label">Updated By:</label>
+            <div class="col-xl-8">
+              <input class="form-control" type="text" value="{{approved_by}}" name="" readonly>
+            </div>
+          </div>
+          <hr>
+          <div class="form-group">
+            <label class="col-xl-3 control-label">Updated On:</label>
+            <div class="col-xl-8">
+              <input class="form-control" type="text" value="{{updated_on}}" name="" readonly>
+            </div>
+          </div>
+          <hr>
+          <div class="form-group">
+            <label class="col-xl-3 control-label">Created On Date:</label>
+            <div class="col-xl-8">
+              <input class="form-control" type="date" value="{{created_date}}" name="" readonly>
+            </div>
+          </div>
+          <hr>
+          <div class="form-group">
+            <label class="col-xl-3 control-label">Created At Time:</label>
+            <div class="col-xl-8">
+              <input class="form-control" type="time" value="{{created_time}}" name="" readonly>
+            </div>
+          </div>
+          <hr>
+          <div class="form-group">
+            <label class="col-xl-3 control-label"></label>
+            <div class="col-xl-8">
+              <input type="submit" class="btn btn-primary" value="Add" style="background-color:red;border-color:red;">
+              <span></span>
+              <input type="reset" class="btn btn-default" value="Cancel">
+            </div>
+          </div>
+        </form>
+      </div>
+  </div>
+</div>
+<hr>
+{% if messages %}
+{% for message in messages %}
+ {% if message.tags %}  <script>window.alert("{{ message }}")</script> {% endif %}
+
+{% endfor %}
+
+{% endif %}
+<script>
+  function toggleSidebar(ref){
+    document.getElementById("sidebar").classList.toggle('active');
+  }
+  radiobtn = document.getElementById("{{group}}");
+  radiobtn.checked = true;
+</script>
+</body>

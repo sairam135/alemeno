@@ -1,0 +1,115 @@
+body{
+    margin:0px;
+    padding:0px;
+}
+nav{
+width:100vw;
+position:fixed;
+height:70px;
+background-color:rgba(0,0,0,1);
+z-index:9999;
+}
+nav .logo{
+    float:left;
+    color:#fff;
+    padding-top:18px;
+    padding-bottom:18px;
+    padding-left:60px;
+    font-family:'Piedra', cursive;
+}
+nav ul{
+    text-align:right;
+    margin:0px;
+    padding:0px;
+    display:flex;
+    float:right;
+}
+nav ul li{
+    list-style:none;
+    display:inline-block;
+    padding:15px;
+}
+nav ul li a{
+    float:right;
+    text-decoration:none;
+    display:block;
+    text-transform:uppercase;
+    color:#fff;
+    font-size:15px;
+    font-family:'Raleway';
+    padding:9px 10px;
+    margin-right:8px;
+}
+nav ul li a:hover{
+    text-decoration:none;
+    background-color:#fff;
+    color:#000;
+    border-radius:7px;
+    .icon{
+  color:red;
+}
+    
+}
+nav ul li a.active{
+background:#cc0000;
+color:#fff;
+border-radius:7px;
+
+}
+#section1{
+    width:100vw;
+    height:100vh;
+    background:url(https://images.creativemarket.com/0.1.0/ps/7756675/910/607/m2/fpnw/wm1/d9xadh26gbufqy2wdye0eic3lpyz49ibhzrjfqmy4xqwebpjiox1plwtsiqhsjtc-.jpg?1581597619&s=f1f457cac1e2b451ab5c1bd45c10ccd7);
+    background-size:cover;
+    background-position:center;
+}
+#lightSlider{
+  list-style:none;
+  display:flex;
+}
+#lightslider li{
+  display:inline-block;
+}
+.box{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#transport{
+  width:100vw;
+  height:30vh;
+  list-style:none;
+  display:flex;
+  text-align:center;
+  justify-content:center;
+}
+#transport li{
+  display:inline;
+  text-align:center;
+  width:100vw;
+  justify-content:center;
+}
+.mode{
+  height:20vh;
+  width:20vh;
+  margin:10vh 16vh;
+  border-radius:10vh;
+  background-color:black;
+  text-align:center;
+  justify-content:center;
+  display:flex;
+
+}
+
+.carousel-inner > .item >img{
+  min-height : 300px;
+  max-height : 300px;
+  width : 80%;
+}
+.swiper-container {
+    width: 100vw;
+    height: 200px;
+}
+.swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+}
